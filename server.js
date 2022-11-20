@@ -1,11 +1,26 @@
-import { ApolloServer, gql } from 'apollo-server';
+import { ApolloServer, gql } from "apollo-server";
 
 const typeDefs = gql`
-  type Query {
+  type User {
+    id: ID
+    username: String
+  }
+  type Tweet {
+    id: ID
     text: String
-    hello: String
+    author: User
+  }
+  type Query {
+    allTweet: [Tweet]
+    tweet(id: ID): Tweet
+  }
+  type Mutation {
+    postTweet(text: String, userId: ID): Tweet
+    deleteTweet(id: ID): Boolean
   }
 `;
+// GET /api/v1/tweets
+// GET /api/v1/tweet/:id
 
 const server = new ApolloServer({ typeDefs });
 
