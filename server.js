@@ -44,6 +44,9 @@ const typeDefs = gql`
     tweet(id: ID!): Tweet
   }
   type Mutation {
+    """
+    Post Tweet
+    """
     postTweet(text: String!, userId: ID!): Tweet!
     """
     Delete a Tweet if found, else returns false
