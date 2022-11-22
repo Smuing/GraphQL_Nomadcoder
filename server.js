@@ -40,6 +40,9 @@ const typeDefs = gql`
   }
   type Query {
     allUsers: [User!]!
+    """
+    All Tweets
+    """
     allTweets: [Tweet!]!
     tweet(id: ID!): Tweet
   }
